@@ -6,7 +6,7 @@
 %>
 <html>
 <body>
-    <form action="/sep_java_web_app_war/login" method="get">
+    <form action="/sep_java_web_app_war/do/login" method="post">
         username: <input name="username" type="text"> <br/>
         password: <input name="password" type="password"><br/>
         <input type="submit" value="login">

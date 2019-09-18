@@ -1,37 +1,25 @@
 package com.ss.controller;
 
-import com.ss.entity.User;
-import com.ss.service.UserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
+@Controller
+@RequestMapping("/do")
+public class LoginController{
 
-public class LoginController extends HttpServlet {
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+    @PostMapping("/login")
+    public String handleLogin(@RequestParam(name = "username") String name, @RequestParam(name = "password") String password){
+        System.out.println(name);
+        System.out.println(password);
+//        ModelAndView modelAndView = new ModelAndView();
 
-        System.out.printf("controller:" + username);
-        System.out.printf("controller:" + password);
+        return "main";
+    }
 
-        if (new UserService().isValidUser(username,password)){
-            HttpSession session = req.getSession();
-            User user = new User();
-            user.setUsername(username);
-            session.setAttribute("user", user);
-            req.setAttribute("username",username);
-            req.getRequestDispatcher("/main.jsp").forward(req,resp);
-
-        }else {
-            resp.sendRedirect("/sep_java_web_app_war");
-        }
-//        req.setAttribute("username",username);
-//        req.getRequestDispatcher("/main.jsp").forward(req,resp);
+    @GetMapping("/logout")
+    public String handleLogout(){
+        return "index";
     }
 }

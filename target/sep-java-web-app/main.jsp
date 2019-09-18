@@ -5,12 +5,12 @@
   Time: 18:10
   To change this template use File | Settings | File Templates.
 --%>
-<%
-    User user = (User) request.getSession().getAttribute("user");
-    if (user == null){
-        response.sendRedirect("/sep_java_web_app_war");
-    }
-%>
+<%--<%--%>
+<%--    User user = (User) request.getSession().getAttribute("user");--%>
+<%--    if (user == null){--%>
+<%--        response.sendRedirect("/sep_java_web_app_war");--%>
+<%--    }--%>
+<%--%>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,6 +18,7 @@
 </head>
 <body>
     <h1>Hello</h1>
-    <% User user1 = (User)request.getSession().getAttribute("user"); out.print(user1.getUsername());%>
+<%--    <% User user1 = (User)request.getSession().getAttribute("user"); out.print(user1.getUsername());%>--%>
+    <a href="/sep_java_web_app_war/do/logout">logout</a>
 </body>
 </html>
